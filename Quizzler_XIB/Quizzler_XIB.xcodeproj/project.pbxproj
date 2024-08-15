@@ -13,6 +13,12 @@
 		7CF537432C6DBC1400E267BA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7CF537422C6DBC1400E267BA /* Base */; };
 		7CF537532C6DBD6400E267BA /* QuizzVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF537512C6DBD6400E267BA /* QuizzVC.swift */; };
 		7CF537542C6DBD6400E267BA /* QuizzVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CF537522C6DBD6400E267BA /* QuizzVC.xib */; };
+		7CF537562C6E1AC900E267BA /* QuizzVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF537552C6E1AC900E267BA /* QuizzVM.swift */; };
+		7CF537582C6E1B0300E267BA /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF537572C6E1B0300E267BA /* QuestionModel.swift */; };
+		7CF5375C2C6E1C2400E267BA /* GameRoundRepositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF5375B2C6E1C2400E267BA /* GameRoundRepositor.swift */; };
+		7CF537612C6E23F300E267BA /* GameRoundDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF537602C6E23F300E267BA /* GameRoundDataSource.swift */; };
+		7CF537632C6E263A00E267BA /* GameRoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF537622C6E263A00E267BA /* GameRoundModel.swift */; };
+		7CF537652C6E2EAE00E267BA /* GameRoundRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF537642C6E2EAE00E267BA /* GameRoundRepositoryImp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		7CF537442C6DBC1400E267BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF537512C6DBD6400E267BA /* QuizzVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzVC.swift; sourceTree = "<group>"; };
 		7CF537522C6DBD6400E267BA /* QuizzVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizzVC.xib; sourceTree = "<group>"; };
+		7CF537552C6E1AC900E267BA /* QuizzVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzVM.swift; sourceTree = "<group>"; };
+		7CF537572C6E1B0300E267BA /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		7CF5375B2C6E1C2400E267BA /* GameRoundRepositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoundRepositor.swift; sourceTree = "<group>"; };
+		7CF537602C6E23F300E267BA /* GameRoundDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoundDataSource.swift; sourceTree = "<group>"; };
+		7CF537622C6E263A00E267BA /* GameRoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoundModel.swift; sourceTree = "<group>"; };
+		7CF537642C6E2EAE00E267BA /* GameRoundRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoundRepositoryImp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 		7CF537352C6DBC1300E267BA /* Quizzler_XIB */ = {
 			isa = PBXGroup;
 			children = (
+				7CF537592C6E1BB300E267BA /* Data */,
 				7CF537362C6DBC1300E267BA /* AppDelegate.swift */,
 				7CF537382C6DBC1300E267BA /* SceneDelegate.swift */,
 				7CF5374D2C6DBCAE00E267BA /* Application */,
@@ -68,6 +81,8 @@
 		7CF5374B2C6DBC6000E267BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7CF537572C6E1B0300E267BA /* QuestionModel.swift */,
+				7CF537622C6E263A00E267BA /* GameRoundModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -92,6 +107,7 @@
 		7CF5374E2C6DBCB400E267BA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				7CF5375A2C6E1BFB00E267BA /* RepositoryInterfaces */,
 				7CF5374B2C6DBC6000E267BA /* Models */,
 			);
 			path = Domain;
@@ -111,8 +127,50 @@
 			children = (
 				7CF537512C6DBD6400E267BA /* QuizzVC.swift */,
 				7CF537522C6DBD6400E267BA /* QuizzVC.xib */,
+				7CF537552C6E1AC900E267BA /* QuizzVM.swift */,
 			);
 			path = Quizz;
+			sourceTree = "<group>";
+		};
+		7CF537592C6E1BB300E267BA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7CF5375E2C6E1CF300E267BA /* RepositoryImplementations */,
+				7CF5375D2C6E1CEB00E267BA /* DataSources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7CF5375A2C6E1BFB00E267BA /* RepositoryInterfaces */ = {
+			isa = PBXGroup;
+			children = (
+				7CF5375B2C6E1C2400E267BA /* GameRoundRepositor.swift */,
+			);
+			path = RepositoryInterfaces;
+			sourceTree = "<group>";
+		};
+		7CF5375D2C6E1CEB00E267BA /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				7CF5375F2C6E1D1C00E267BA /* Local */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		7CF5375E2C6E1CF300E267BA /* RepositoryImplementations */ = {
+			isa = PBXGroup;
+			children = (
+				7CF537642C6E2EAE00E267BA /* GameRoundRepositoryImp.swift */,
+			);
+			path = RepositoryImplementations;
+			sourceTree = "<group>";
+		};
+		7CF5375F2C6E1D1C00E267BA /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				7CF537602C6E23F300E267BA /* GameRoundDataSource.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +246,13 @@
 			files = (
 				7CF537532C6DBD6400E267BA /* QuizzVC.swift in Sources */,
 				7CF537372C6DBC1300E267BA /* AppDelegate.swift in Sources */,
+				7CF537632C6E263A00E267BA /* GameRoundModel.swift in Sources */,
+				7CF537562C6E1AC900E267BA /* QuizzVM.swift in Sources */,
 				7CF537392C6DBC1300E267BA /* SceneDelegate.swift in Sources */,
+				7CF537582C6E1B0300E267BA /* QuestionModel.swift in Sources */,
+				7CF5375C2C6E1C2400E267BA /* GameRoundRepositor.swift in Sources */,
+				7CF537652C6E2EAE00E267BA /* GameRoundRepositoryImp.swift in Sources */,
+				7CF537612C6E23F300E267BA /* GameRoundDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

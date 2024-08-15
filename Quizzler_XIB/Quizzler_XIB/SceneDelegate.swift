@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: scence)
 
-        window.rootViewController = UINavigationController(rootViewController: QuizzVC())
+        window.rootViewController = QuizzVC()
         self.window = window
         self.window?.makeKeyAndVisible()
     }
