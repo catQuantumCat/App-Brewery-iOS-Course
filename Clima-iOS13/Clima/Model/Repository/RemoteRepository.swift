@@ -1,3 +1,5 @@
+
+
 import Foundation
 import CoreLocation
 
@@ -6,7 +8,13 @@ enum APIError: Error {
 }
 
 class RemoteRepository {
-    let baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=7bbd3fc7d388785775237f77e62d5acc&units=metric"
+    let baseURL: String
+    let API_KEY: String = "API_KEY"
+    init(){
+
+        baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(API_KEY)&units=metric"
+        
+    }
     
     func fetchData(cityName: String, completion: @escaping (Result<WeatherModel, APIError>) -> Void){
         performRequest(url: "\(baseURL)&q=\(cityName)", completion: completion)
@@ -49,3 +57,4 @@ class RemoteRepository {
         }.resume()
     }
 }
+
