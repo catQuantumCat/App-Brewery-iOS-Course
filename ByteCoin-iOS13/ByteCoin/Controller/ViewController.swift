@@ -8,21 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController{
-    
-    let coinManager: CoinManager = CoinManager()
+class ViewController: UIViewController {
+    let coinManager: CoinManager = .init()
 
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var bitcoinLabel: UILabel!
-    @IBOutlet weak var currencyPicker: UIPickerView!
+    @IBOutlet var currencyLabel: UILabel!
+    @IBOutlet var bitcoinLabel: UILabel!
+    @IBOutlet var currencyPicker: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
 }
 
-
-extension ViewController : UIPickerViewDataSource, UIPickerViewDelegate {
+extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
@@ -31,17 +29,36 @@ extension ViewController : UIPickerViewDataSource, UIPickerViewDelegate {
         coinManager.currencyArray.count
     }
     
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         coinManager.currencyArray[row]
     }
     
-    
-}
-
-extension ViewController{
-    private func setup(){
-        self.currencyPicker.delegate = self;
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        getCoin(for: coinManager.currencyArray[row])
     }
 }
 
+extension ViewController {
+    private func setup() {
+        currencyPicker.delegate = self
+    }
+    
+    private func getCoin(for currency: String) {
+        coinManager.getCoinPrice(for: currency) { result in
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {
+                    return
+                }
+                
+                switch result {
+                case .success(let data):
+                    self.bitcoinLabel.text = data
+                    self.currencyLabel.text = currency
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+}
