@@ -1,5 +1,3 @@
-
-
 import Foundation
 import CoreLocation
 
@@ -57,4 +55,3 @@ class RemoteRepository {
         }.resume()
     }
 }
-
