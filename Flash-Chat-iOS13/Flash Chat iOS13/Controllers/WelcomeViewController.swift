@@ -1,22 +1,30 @@
-//
-//  WelcomeViewController.swift
-//  Flash Chat iOS13
-//
-//  Created by Angela Yu on 21/10/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
-//
-
 import UIKit
 
 class WelcomeViewController: UIViewController {
+    @IBOutlet var titleLabel: UILabel!
 
-    @IBOutlet weak var titleLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+}
 
-       
+extension WelcomeViewController {
+    func setup() {
+        labelAnimation(for: titleLabel, with: "⚡FlashChat")
     }
     
-
+    func labelAnimation(for label: UILabel, with targetText: String) {
+        
+        
+        label.text = ""
+        
+        
+        for i in  0..<targetText.count {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300 * i)){
+                
+                label.text! += targetText[i]
+            }
+        }
+    }
 }
