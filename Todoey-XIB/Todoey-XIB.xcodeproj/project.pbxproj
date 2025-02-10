@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7CE10D4C2D2D29850066363A /* Exceptions for "Todoey-XIB" folder in "Todoey-XIB" target */ = {
+		7CCF0BED2D51F52E002ED070 /* Exceptions for "Todoey-XIB" folder in "Todoey-XIB" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -43,7 +43,7 @@
 		7CE10D262D2D29830066363A /* Todoey-XIB */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				7CE10D4C2D2D29850066363A /* Exceptions for "Todoey-XIB" folder in "Todoey-XIB" target */,
+				7CCF0BED2D51F52E002ED070 /* Exceptions for "Todoey-XIB" folder in "Todoey-XIB" target */,
 			);
 			path = "Todoey-XIB";
 			sourceTree = "<group>";

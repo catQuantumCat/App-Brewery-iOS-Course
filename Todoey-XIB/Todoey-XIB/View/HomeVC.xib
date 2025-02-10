@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="Todoey_XIB" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="zYo-T4-dWv" id="rLU-mP-mrX"/>
                 <outlet property="todoListTableView" destination="3Qp-N6-KOj" id="IuL-EY-hcW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,16 +21,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Qp-N6-KOj">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <rect key="frame" x="0.0" y="115" width="393" height="737"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-T4-dWv">
+                    <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="ZE6-mi-rNi"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <constraints>
                 <constraint firstItem="3Qp-N6-KOj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="06O-Ic-UV1"/>
+                <constraint firstItem="zYo-T4-dWv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4ux-12-PKP"/>
                 <constraint firstItem="3Qp-N6-KOj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Aad-TV-3Sf"/>
-                <constraint firstItem="3Qp-N6-KOj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tsL-Tm-xcL"/>
-                <constraint firstAttribute="bottom" secondItem="3Qp-N6-KOj" secondAttribute="bottom" id="z55-tq-UzT"/>
+                <constraint firstItem="zYo-T4-dWv" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="T63-ih-fN4"/>
+                <constraint firstItem="zYo-T4-dWv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eQG-i6-NAr"/>
+                <constraint firstAttribute="bottom" secondItem="3Qp-N6-KOj" secondAttribute="bottom" id="kJW-s5-Ljr"/>
+                <constraint firstItem="zYo-T4-dWv" firstAttribute="bottom" secondItem="3Qp-N6-KOj" secondAttribute="top" id="paV-CZ-gv9"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-12"/>
         </view>
