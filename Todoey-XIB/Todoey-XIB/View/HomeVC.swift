@@ -5,30 +5,29 @@
 //  Created by Huy on 7/1/25.
 //
 
-import CoreData
+import RealmSwift
 import UIKit
 
 class HomeVC: UIViewController {
-    private var dummyData: [TodoModel] = []
+    private var todoList: Results<TodoModel>?
+    private let realm = try! Realm()
     
-    
-    private var category : CategoryModel?{
-        didSet
-        {
-            dummyData = getData()
-        }
-    }
-    
-    private let coreDataContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var category: CategoryModel?
+    private var parentColor: UIColor = .white
 
     @IBOutlet var todoListTableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    init(category: CategoryModel) {
-        super.init(nibName: nil, bundle: nil)
+    init(category: CategoryModel?) {
+        
+        if let category  {
+            self.parentColor = UIColor(hex: category.color) ?? .white
+        }
         self.category = category
+        super.init(nibName: nil, bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,14 +36,18 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         setup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navbarSetup()
+        searchBarSetup()
+    }
 }
 
 extension HomeVC {
     private func setup() {
         tableSetup()
-        navbarSetup()
-        searchBarSetup()
-        dummyData = getData()
+        getData()
     }
 }
 
@@ -61,15 +64,15 @@ extension HomeVC {
         }
 
         let alertAction = UIAlertAction(title: "Add", style: .default) { _ in
-           
-            let newTodo = TodoModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
-            
-            newTodo.title = textField.text ?? ""
-            newTodo.status = false
-            newTodo.category = self.category
-            
-            self.dummyData.append(newTodo)
-            self.saveData()
+            if (textField.text?.isEmpty ?? true){
+                return
+            }
+            if self.category != nil{
+                self.saveData {
+                    let newTodo = TodoModel(title: textField.text ?? "")
+                    self.category!.todos.append(newTodo)
+                }
+            }
             self.todoListTableView.reloadData()
         }
         
@@ -84,21 +87,21 @@ extension HomeVC {
 extension HomeVC: UISearchBarDelegate {
     private func searchBarSetup() {
         searchBar.delegate = self
+        searchBar.barTintColor = parentColor
+        
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+                
+            
+            textField.backgroundColor = .white
+            }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if let text = searchBar.text, text.isEmpty{
-            return
-        }
-        
-        dummyData = searchData(with: searchBar.text ?? "")
-        todoListTableView.reloadData()
+        searchData(with: searchBar.text ?? "")
     }
 }
 
@@ -113,12 +116,21 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dummyData.count
+        todoList?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "listID", for: indexPath) as? TodoListCellVC {
-            cell.configure(with: dummyData[indexPath.row])
+            if (todoList != nil){
+                
+                let gradientPercentage = 1 - (CGFloat(indexPath.row) / CGFloat(todoList!.count))
+                
+                
+                
+                cell.configure(with: todoList![indexPath.row], color: parentColor.withAlphaComponent(gradientPercentage))
+            }
             return cell
         }
         
@@ -126,18 +138,23 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        dummyData[indexPath.row].status = !dummyData[indexPath.row].status
         
-        saveData()
-        
+        if let todo = todoList?[indexPath.row]{
+            saveData {
+                todo.status = !todo.status
+            }
+            
+        }
         tableView.reloadRows(at: [indexPath], with: .automatic)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteData(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+        if let todo = todoList?[indexPath.row], editingStyle == .delete {
+            saveData {
+                realm.delete(todo)
+            }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 }
@@ -145,48 +162,32 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: - data processing
 
 extension HomeVC {
-    private func saveData() {
+    private func saveData(_ completion: () -> Void) {
         do {
-            try coreDataContext.save()
+            try realm.write {
+                completion()
+            }
             
         } catch {
             print("Error while saving data: \(error)")
         }
     }
 
-    private func getData(with request: NSFetchRequest<TodoModel> = TodoModel.fetchRequest(), predicate: NSPredicate? = nil) -> [TodoModel] {
+    private func getData(){
+        todoList = self.category?.todos.sorted(byKeyPath: "createdDate", ascending: false)
+        todoListTableView.reloadData()
         
-        if let category{
-            let categoryPredicate = NSPredicate(format: "category.name MATCHES %@", category.name ?? "")
-            
-            if let predicate = predicate{
-                request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, categoryPredicate])
-            }
-            else{
-                request.predicate = categoryPredicate
-            }
-        }
-
-        do {
-            return try coreDataContext.fetch(request)
-    
-        } catch {
-            print("Error getting data: \(error)")
-            return []
-        }
     }
 
-    private func deleteData(at index: Int) {
-        coreDataContext.delete(dummyData[index])
-        dummyData.remove(at: index)
-        saveData()
-    }
-    
-    private func searchData(with keyword: String) -> [TodoModel] {
-        let request: NSFetchRequest<TodoModel> = TodoModel.fetchRequest()
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", keyword)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        return getData(with: request, predicate: predicate)
+    private func searchData(with keyword: String) {
+        if (keyword.isEmpty) {
+            getData()
+
+        }
+        else{
+            todoList = todoList?.filter("title CONTAINS[cd] %@", keyword)
+            todoListTableView.reloadData()
+        }
     }
 }
 
@@ -194,25 +195,37 @@ extension HomeVC {
 
 extension HomeVC {
     private func navbarSetup() {
-        guard let navigationController = navigationController else { return }
+        
+        guard let navigationController else {return}
         
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = .white
+            appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = parentColor
         
         
-        navigationItem.title = "Item"
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: parentColor.contrastColor
+        ]
+        appearance.titleTextAttributes = [
+            .foregroundColor: parentColor.contrastColor
+        ]
+        
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
+        navigationController.navigationBar.compactAppearance = appearance
+        
+        navigationController.navigationBar.tintColor = parentColor.contrastColor
+        
+        navigationItem.largeTitleDisplayMode = .always
+
+        navigationItem.title = category?.name ?? "Items"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "plus"),
             style: .plain,
             target: self,
             action: #selector(addButtonPressed)
         )
-        
-        
-        let navbar = navigationController.navigationBar
-        navbar.prefersLargeTitles = false
-        navbar.standardAppearance = appearance
-        navbar.scrollEdgeAppearance = appearance
     }
 }
+
+

@@ -5,16 +5,20 @@
 //  Created by Huy on 7/1/25.
 //
 
-import UIKit
 import CoreData
+import RealmSwift
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // if schema changes, delete all data
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            deleteRealmIfMigrationNeeded: true
+        )
+        Realm.Configuration.defaultConfiguration = config
+
         return true
     }
 
@@ -31,42 +35,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
-        self.saveContext()
+        saveContext()
     }
-    
-    
-    
+
     lazy var persistentContainer: NSPersistentContainer = {
-           
-            let container = NSPersistentContainer(name: "LocalDataSource")
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
-        }()
-    
-    
-    func saveContext () {
-            let context = persistentContainer.viewContext
-            if context.hasChanges {
-                do {
-                    try context.save()
-                } catch {
-                   let nserror = error as NSError
-                    fatalError("Unresolved: \(nserror), \(nserror.userInfo)")
-                }
+        let container = NSPersistentContainer(name: "LocalDataSource")
+        container.loadPersistentStores(completionHandler: { _, error in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved: \(nserror), \(nserror.userInfo)")
             }
         }
-    
+    }
+
     func sceneDidEnterBackground(_ scene: UIScene) {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
 }
-

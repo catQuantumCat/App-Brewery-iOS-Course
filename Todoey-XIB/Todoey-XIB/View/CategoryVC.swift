@@ -6,15 +6,16 @@
 //
 
 import CoreData
+import RealmSwift
 import UIKit
 
 class CategoryVC: UIViewController {
     // MARK: PROPERTIES
-
-    let coreDataContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var categories: [CategoryModel] = []
-
+    let realm = try! Realm()
+    
+    var categories: Results<CategoryModel>?
+    
     // MARK: IB PROPERTIES
 
     @IBOutlet var categoryTableView: UITableView!
@@ -24,9 +25,13 @@ class CategoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        categories = loadData()
+        loadData()
         categoryTableView.reloadData()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navBarSetup()
     }
 }
 
@@ -35,21 +40,20 @@ class CategoryVC: UIViewController {
 extension CategoryVC {
     private func setup() {
         tableSetup()
-        navBarSetup()
     }
 }
 
-//MARK: - NAVIGATION
+// MARK: - NAVIGATION
 
 extension CategoryVC {
-    private func openOneCategory(with category: CategoryModel){
+    private func openOneCategory(with category: CategoryModel?) {
         let vc = HomeVC(category: category)
         navigationController?.pushViewController(vc, animated: true)
-
     }
 }
 
 // MARK: - TABLE
+
 extension CategoryVC: UITableViewDataSource, UITableViewDelegate {
     private func tableSetup() {
         categoryTableView.delegate = self
@@ -59,100 +63,131 @@ extension CategoryVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categories.count
+        categories?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTableView.dequeueReusableCell(withIdentifier: Constants.categoryCellReuseIdentifier) as! CategoryCell
         
-        cell.configure(title: categories[indexPath.row].name ?? "")
+            
+        cell.configure(with: categories?[indexPath.row])
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.openOneCategory(with: categories[indexPath.row])
+        openOneCategory(with: categories?[indexPath.row])
         categoryTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            removeCategory(with: categories?[indexPath.row])
+            categoryTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 
 // MARK: - NAVBAR
+
 extension CategoryVC {
     private func navBarSetup() {
-        guard let navigationController = navigationController else { return }
-
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
         
+        guard let categories = categories, let navigationController = navigationController else { return }
+        navigationItem.largeTitleDisplayMode = .always
+        
+        let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+        
+        let color = UIColor(hex: categories.first?.color ?? "") ?? .white
+        
+        appearance.backgroundColor = color
+        
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: color.contrastColor
+        ]
+        appearance.titleTextAttributes = [
+            .foregroundColor: color.contrastColor
+        ]
+        
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
+        navigationController.navigationBar.compactAppearance = appearance
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "plus"),
             style: .plain,
             target: self,
             action: #selector(addButtonPressed)
+            
         )
-                
+        navigationController.navigationBar.tintColor = color.contrastColor
         navigationItem.title = "Todoey"
-
-        let navbar = navigationController.navigationBar
-        navbar.prefersLargeTitles = false
-        navbar.standardAppearance = appearance
-        navbar.scrollEdgeAppearance = appearance
     }
     
     @objc private func addButtonPressed() {
-        self.showAddAlert()
-        
+        showAddAlert()
     }
 }
 
-//MARK: - ALERT
-extension CategoryVC{
-    
-    private func showAddAlert()
-        {
-            var textField = UITextField()
-            let alert = UIAlertController(title: "New category", message: nil, preferredStyle: .alert)
+// MARK: - ALERT
+
+extension CategoryVC {
+    private func showAddAlert() {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "New category", message: nil, preferredStyle: .alert)
             
-            alert.addTextField { field in
-                textField = field
-            }
-            let alertAction = UIAlertAction(title: "Add", style: .default) { _ in
-                
-                if let text = textField.text, text.isEmpty { return }
-                
-                let category = self.addCategory(name: textField.text ?? "")
-                self.categories.append(category)
-                self.categoryTableView.reloadData()
-            }
-            alert.addAction(alertAction)
-            present(alert, animated: true)
+        alert.addTextField { field in
+            textField = field
         }
+        let alertAction = UIAlertAction(title: "Add", style: .default) { _ in
+            if let text = textField.text, text.isEmpty { return }
+            self.addCategory(name: textField.text ?? "")
+        }
+        alert.addAction(alertAction)
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - DATA
+
 extension CategoryVC {
-    private func loadData(with request: NSFetchRequest<CategoryModel> = CategoryModel.fetchRequest()) -> [CategoryModel] {
-        do {
-            return try coreDataContext.fetch(request)
-            
-        } catch {
-            print(error.localizedDescription)
-            return []
-        }
+    private func loadData() {
+        categories = realm.objects(CategoryModel.self)
     }
     
-    private func saveData(){
-        do{
-            try coreDataContext.save()
-        }catch{
+    private func writeToRealm(completion: () -> Void) {
+        do {
+            try realm.write {
+                completion()
+            }
+        } catch {
             print("Error while saving categories: \(error)")
         }
     }
     
-    private func addCategory(name: String) -> CategoryModel {
-        let newCategory = CategoryModel(context: coreDataContext)
+    private func saveData(category: CategoryModel) {
+        writeToRealm {
+            realm.add(category)
+        }
+    }
+    
+    private func addCategory(name: String) {
+        let newCategory = CategoryModel()
         newCategory.name = name
-        saveData()
-        return newCategory
+        newCategory.color = UIColor.random.hexString
+        saveData(category: newCategory)
+        categoryTableView.reloadData()
+    }
+    
+    private func removeCategory(with category: CategoryModel?) {
+        if let categoryToDelete = category {
+            writeToRealm {
+                realm.delete(categoryToDelete)
+            }
+        }
     }
 }

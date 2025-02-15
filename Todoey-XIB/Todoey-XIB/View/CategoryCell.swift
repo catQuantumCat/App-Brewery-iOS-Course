@@ -28,7 +28,13 @@ class CategoryCell: UITableViewCell
 //MARK: - CONFIG
 
 extension CategoryCell{
-    func configure(title: String){
-        label.text = title
+    func configure(with category: CategoryModel?){
+        guard let category else{
+            label.text = "No category found"
+            return
+        }
+        label.text = category.name
+        label.textColor = UIColor(hex: category.color)?.contrastColor
+        self.backgroundColor = UIColor(hex: category.color)
     }
 }

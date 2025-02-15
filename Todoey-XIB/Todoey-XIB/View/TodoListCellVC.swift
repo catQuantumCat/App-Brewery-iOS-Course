@@ -11,6 +11,7 @@ class TodoListCellVC: UITableViewCell {
     
     @IBOutlet weak var titleText: UILabel!
     
+    @IBOutlet weak var dateText: UILabel!
     private var todo : TodoModel? = nil
 
     override func awakeFromNib() {
@@ -22,11 +23,16 @@ class TodoListCellVC: UITableViewCell {
     }
     
     
-    public func configure(with data: TodoModel) {
+    public func configure(with data: TodoModel?, color: UIColor = .white) {
         self.todo = data
+        self.backgroundColor = color
+        
+        self.titleText.textColor = color.contrastColor
+        self.dateText.textColor = color.contrastColor.withAlphaComponent(0.5)
 
-        if let todo{
+        if let todo {
             titleText.text = todo.title
+            dateText.text = todo.createdDate.formatted()
             self.accessoryType = todo.status == true ? .checkmark : .none
         }
 
