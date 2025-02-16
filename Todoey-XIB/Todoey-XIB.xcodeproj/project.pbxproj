@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C9E5CD12D599FB0003A09E8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7C9E5CD02D599FB0003A09E8 /* RealmSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CE10D3B2D2D29840066363A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CE10D1C2D2D29830066363A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CE10D232D2D29830066363A;
+			remoteInfo = "Todoey-XIB";
+		};
+		7CE10D452D2D29850066363A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CE10D1C2D2D29830066363A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CE10D232D2D29830066363A;
+			remoteInfo = "Todoey-XIB";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7CE10D242D2D29830066363A /* Todoey-XIB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todoey-XIB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE10D3A2D2D29840066363A /* Todoey-XIBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Todoey-XIBTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE10D442D2D29850066363A /* Todoey-XIBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Todoey-XIBUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7CCF0BED2D51F52E002ED070 /* Exceptions for "Todoey-XIB" folder in "Todoey-XIB" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 7CE10D232D2D29830066363A /* Todoey-XIB */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7CE10D262D2D29830066363A /* Todoey-XIB */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7CCF0BED2D51F52E002ED070 /* Exceptions for "Todoey-XIB" folder in "Todoey-XIB" target */,
+			);
+			path = "Todoey-XIB";
+			sourceTree = "<group>";
+		};
+		7CE10D3D2D2D29840066363A /* Todoey-XIBTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Todoey-XIBTests";
+			sourceTree = "<group>";
+		};
+		7CE10D472D2D29850066363A /* Todoey-XIBUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Todoey-XIBUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CE10D212D2D29830066363A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C9E5CD12D599FB0003A09E8 /* RealmSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE10D372D2D29840066363A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE10D412D2D29850066363A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7CE10D1B2D2D29830066363A = {
+			isa = PBXGroup;
+			children = (
+				7CE10D262D2D29830066363A /* Todoey-XIB */,
+				7CE10D3D2D2D29840066363A /* Todoey-XIBTests */,
+				7CE10D472D2D29850066363A /* Todoey-XIBUITests */,
+				7CE10D252D2D29830066363A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7CE10D252D2D29830066363A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CE10D242D2D29830066363A /* Todoey-XIB.app */,
+				7CE10D3A2D2D29840066363A /* Todoey-XIBTests.xctest */,
+				7CE10D442D2D29850066363A /* Todoey-XIBUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7CE10D232D2D29830066363A /* Todoey-XIB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CE10D4D2D2D29850066363A /* Build configuration list for PBXNativeTarget "Todoey-XIB" */;
+			buildPhases = (
+				7CE10D202D2D29830066363A /* Sources */,
+				7CE10D212D2D29830066363A /* Frameworks */,
+				7CE10D222D2D29830066363A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7CE10D262D2D29830066363A /* Todoey-XIB */,
+			);
+			name = "Todoey-XIB";
+			packageProductDependencies = (
+				7C9E5CD02D599FB0003A09E8 /* RealmSwift */,
+			);
+			productName = "Todoey-XIB";
+			productReference = 7CE10D242D2D29830066363A /* Todoey-XIB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7CE10D392D2D29840066363A /* Todoey-XIBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CE10D522D2D29850066363A /* Build configuration list for PBXNativeTarget "Todoey-XIBTests" */;
+			buildPhases = (
+				7CE10D362D2D29840066363A /* Sources */,
+				7CE10D372D2D29840066363A /* Frameworks */,
+				7CE10D382D2D29840066363A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CE10D3C2D2D29840066363A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7CE10D3D2D2D29840066363A /* Todoey-XIBTests */,
+			);
+			name = "Todoey-XIBTests";
+			packageProductDependencies = (
+			);
+			productName = "Todoey-XIBTests";
+			productReference = 7CE10D3A2D2D29840066363A /* Todoey-XIBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7CE10D432D2D29850066363A /* Todoey-XIBUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CE10D552D2D29850066363A /* Build configuration list for PBXNativeTarget "Todoey-XIBUITests" */;
+			buildPhases = (
+				7CE10D402D2D29850066363A /* Sources */,
+				7CE10D412D2D29850066363A /* Frameworks */,
+				7CE10D422D2D29850066363A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CE10D462D2D29850066363A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7CE10D472D2D29850066363A /* Todoey-XIBUITests */,
+			);
+			name = "Todoey-XIBUITests";
+			packageProductDependencies = (
+			);
+			productName = "Todoey-XIBUITests";
+			productReference = 7CE10D442D2D29850066363A /* Todoey-XIBUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CE10D1C2D2D29830066363A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					7CE10D232D2D29830066363A = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					7CE10D392D2D29840066363A = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 7CE10D232D2D29830066363A;
+					};
+					7CE10D432D2D29850066363A = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 7CE10D232D2D29830066363A;
+					};
+				};
+			};
+			buildConfigurationList = 7CE10D1F2D2D29830066363A /* Build configuration list for PBXProject "Todoey-XIB" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7CE10D1B2D2D29830066363A;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7C9E5CCF2D599FB0003A09E8 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7CE10D252D2D29830066363A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CE10D232D2D29830066363A /* Todoey-XIB */,
+				7CE10D392D2D29840066363A /* Todoey-XIBTests */,
+				7CE10D432D2D29850066363A /* Todoey-XIBUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CE10D222D2D29830066363A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE10D382D2D29840066363A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE10D422D2D29850066363A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CE10D202D2D29830066363A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE10D362D2D29840066363A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE10D402D2D29850066363A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CE10D3C2D2D29840066363A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CE10D232D2D29830066363A /* Todoey-XIB */;
+			targetProxy = 7CE10D3B2D2D29840066363A /* PBXContainerItemProxy */;
+		};
+		7CE10D462D2D29850066363A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CE10D232D2D29830066363A /* Todoey-XIB */;
+			targetProxy = 7CE10D452D2D29850066363A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7CE10D4E2D2D29850066363A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D63HJFRU3R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Todoey-XIB/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.myparentsforcemetolearn.Todoey-XIB";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CE10D4F2D2D29850066363A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D63HJFRU3R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Todoey-XIB/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.myparentsforcemetolearn.Todoey-XIB";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7CE10D502D2D29850066363A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7CE10D512D2D29850066363A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7CE10D532D2D29850066363A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.myparentsforcemetolearn.Todoey-XIBTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Todoey-XIB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Todoey-XIB";
+			};
+			name = Debug;
+		};
+		7CE10D542D2D29850066363A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.myparentsforcemetolearn.Todoey-XIBTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Todoey-XIB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Todoey-XIB";
+			};
+			name = Release;
+		};
+		7CE10D562D2D29850066363A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.myparentsforcemetolearn.Todoey-XIBUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Todoey-XIB";
+			};
+			name = Debug;
+		};
+		7CE10D572D2D29850066363A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.myparentsforcemetolearn.Todoey-XIBUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Todoey-XIB";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CE10D1F2D2D29830066363A /* Build configuration list for PBXProject "Todoey-XIB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CE10D502D2D29850066363A /* Debug */,
+				7CE10D512D2D29850066363A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CE10D4D2D2D29850066363A /* Build configuration list for PBXNativeTarget "Todoey-XIB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CE10D4E2D2D29850066363A /* Debug */,
+				7CE10D4F2D2D29850066363A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CE10D522D2D29850066363A /* Build configuration list for PBXNativeTarget "Todoey-XIBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CE10D532D2D29850066363A /* Debug */,
+				7CE10D542D2D29850066363A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CE10D552D2D29850066363A /* Build configuration list for PBXNativeTarget "Todoey-XIBUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CE10D562D2D29850066363A /* Debug */,
+				7CE10D572D2D29850066363A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C9E5CCF2D599FB0003A09E8 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C9E5CD02D599FB0003A09E8 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C9E5CCF2D599FB0003A09E8 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7CE10D1C2D2D29830066363A /* Project object */;
+}
